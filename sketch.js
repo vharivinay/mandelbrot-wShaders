@@ -13,7 +13,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 390, WEBGL);
+  createCanvas(720, 640, WEBGL);
   noStroke();
 
   drawFractal(cX, cY);
@@ -56,6 +56,8 @@ function draw() {
 }
 
 function drawFractal(cX, cY, scale) {
+  // 'iResolution sets the GLSL canvas resolution'
+  mandelbrot.setUniform("iResolution", [width, height]);
   // 'p' is the center point of the Mandelbrot image
   // default center is [-0.74364388703, 0.13182590421]
   mandelbrot.setUniform("p", [cX, cY]);
