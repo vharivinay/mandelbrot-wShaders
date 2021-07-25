@@ -8,7 +8,7 @@ varying vec2 vPos;
 // Thsse are passed in as a uniform from the sketch.js file
 uniform vec2 p;
 uniform float r;
-const int I = 750;
+const int I = 500;
 
 void main(){
     
@@ -23,5 +23,5 @@ void main(){
       } 
       z = vec2(z.x*z.x-z.y*z.y, 2.0*z.x*z.y) + c; 
     } 
-    gl_FragColor=vec4(0.5-cos(n*140.0)/2.0,0.5-cos(n* 120.0)/2.0,0.5-cos(n*165.0)/2.0,1.0);
+    gl_FragColor=vec4(0.5-cos(n*75.0)/2.0,0.5-cos(n* 120.0)/2.0,0.5-cos(n*165.0)/2.0,1.0);
 }
