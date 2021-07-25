@@ -15,7 +15,7 @@ function draw() {
   // default center is [-0.74364388703, 0.13182590421]
   mandelbrot.setUniform("p", [-0.74364388703, 0.13182590421]);
   // 'r' is the size of the image in Mandelbrot-space
-  mandelbrot.setUniform("r", 1.5 * exp(-6.5 * (1 + sin(millis() / 2000))));
+  mandelbrot.setUniform("r", 1.5);
   quad(-1, -1, 1, -1, 1, 1, -1, 1);
   shader(mandelbrot);
 
