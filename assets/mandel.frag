@@ -5,7 +5,7 @@ precision highp float;
 uniform vec2 iResolution;
 varying vec2 vPos;
 
-// Thsse are passed in as a uniform from the sketch.js file
+// These are passed in as a uniform from the sketch.js file
 uniform vec2 p;
 uniform float r;
 const int I = 500;
@@ -16,6 +16,7 @@ void main(){
     // fractal code
     vec2 vPos = offset*gl_FragCoord.xy/iResolution.xy - vec2(offset/2.0);
     vec2 c = p + vPos * r, z = c;
+
     float n = 0.0;
     
     for (int i = I; i > 0; i --) { 
