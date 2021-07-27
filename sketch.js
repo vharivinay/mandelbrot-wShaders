@@ -8,6 +8,11 @@ let speed = 0.005;
 let zoomSpeed = 0.05;
 let begin = true;
 
+let minI = -1.5;
+let maxI = 1.5;
+let minR = -2.0;
+let maxR = 2.0;
+
 function preload() {
   mandelbrot = loadShader("assets/mandel.vert", "assets/mandel.frag");
 }
@@ -56,8 +61,13 @@ function draw() {
 }
 
 function drawFractal(cX, cY, scale) {
+  //Set Canvas Coordinates
+  mandelbrot.setUniform("minI", minI);
+  mandelbrot.setUniform("maxI", maxI);
+  mandelbrot.setUniform("minR", minR);
+  mandelbrot.setUniform("maxR", maxR);
   // 'iResolution sets the GLSL canvas resolution'
-  mandelbrot.setUniform("iResolution", [width, height]);
+  mandelbrot.setUniform("canvasResolution", [width, height]);
   // 'p' is the center point of the Mandelbrot image
   // default center is [-0.74364388703, 0.13182590421]
   mandelbrot.setUniform("p", [cX, cY]);
