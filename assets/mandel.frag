@@ -22,7 +22,7 @@ void main(){
 		gl_FragCoord.x * (maxR - minR) / canvasResolution.x + minR,
 		gl_FragCoord.y * (maxI - minI) / canvasResolution.y + minI
 	);
-    vec2 c = p + (vPos-offset) * r, z = c;
+    vec2 c = p + (vPos) * r, z = c;
 
     float n = 0.0;
     
