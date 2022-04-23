@@ -5,9 +5,19 @@ function setupUI() {
   button.mousePressed(toggleLoop);
   record = select('#record');
   record.mousePressed(toggleRecord);
+  reset = select('#reset');
+  reset.mousePressed(initSketch);
   snap = select('#saveFrame');
   snap.mousePressed(saveImage);
   fps = select('#fps');
+
+    // Control UI
+  up = select('#ctl-up');
+  down = select('#ctl-down');
+  left = select('#ctl-left');
+  right = select('#ctl-right');
+  zoomIn = select('#ctl-zoomIn');
+  zoomOut = select('#ctl-zoomOut');
 }
 
 function toggleLoop() {

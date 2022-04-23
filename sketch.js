@@ -1,24 +1,19 @@
 const capturer = new CCapture({
   framerate: 60,
   format: 'webm',
-  name: 'flowField',
+  name: 'mandelbrot',
   quality: 100,
   verbose: true,
 });
 
 let mandelbrot;
-let cX = 0;
-let cY = 0;
-let scale = 1.0;
-let speed = 0.01;
-let zoomSpeed = 0.025;
-let begin = true;
-var redraw = false;
+let cX, cY;
+let scale;
+let speed, zoomSpeed;
+let begin, redraw;
 
-let minI = -1.0;
-let maxI = 1.0;
-let minR = -2.0;
-let maxR = 1.0;
+let minI, maxI;
+let minR, maxR;
 
 let isLoop, isRecording, save;
 
@@ -36,11 +31,7 @@ function setup() {
   p5canvas.parent('sketch-holder');
   noStroke();
   setupUI();
-  isLoop = true;
-  isRecording = false;
-  save = false;
-  freshFrame = true;
-  drawFractal(cX, cY);
+  initSketch();
 }
 
 function draw() {
@@ -50,28 +41,38 @@ function draw() {
   }
   firstCall();
   redraw = false;
-  if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+  // LEFT
+  if (keyIsDown(65)) {
+    left.addClass('bg-primary');
     cX += speed;
     redraw = true;
   }
-  if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+  // RIGHT
+  if (keyIsDown(68)) {
+    right.addClass('bg-primary');
     cX -= speed;
     redraw = true;
   }
-  if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
+  // UP
+  if (keyIsDown(87)) {
+    up.addClass('bg-primary');
     cY += speed;
     redraw = true;
   }
-  if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
+  // DOWN
+  if (keyIsDown(83)) {
+    down.addClass('bg-primary');
     cY -= speed;
     redraw = true;
   }
-  if (keyIsDown(109) || keyIsDown(90)) {
+  if (keyIsDown(109) || keyIsDown(76)) {
+    zoomOut.addClass('bg-primary');
     scale += zoomSpeed * scale;
     speed = panSpeed(scale, speed);
     redraw = true;
   }
-  if (keyIsDown(107) || keyIsDown(88)) {
+  if (keyIsDown(107) || keyIsDown(75)) {
+    zoomIn.addClass('bg-primary');
     scale -= zoomSpeed * scale;
     speed = panSpeed(scale, speed);
     redraw = true;
@@ -95,7 +96,6 @@ function draw() {
     }
 
     drawFractal(cX, cY, scale, minI, maxI, minR, maxR);
-    console.log(round(1 / scale), speed);
   }
   if (isRecording) {
     record.html('Stop Recording');
@@ -136,6 +136,27 @@ function firstCall() {
   }
 }
 
+function initSketch() {
+  cX = 0;
+  cY = 0;
+  scale = 1.0;
+  speed = 0.01;
+  zoomSpeed = 0.025;
+  begin = true;
+  redraw = false;
+
+  minI = -1.0;
+  maxI = 1.0;
+  minR = -2.0;
+  maxR = 1.0;
+
+  isLoop = true;
+  isRecording = false;
+  save = false;
+  freshFrame = true;
+  drawFractal(cX, cY);
+}
+
 function panSpeed(scale, speed) {
   var maxConstrain = 0.0000005;
   if (1 / scale < 5000) {
@@ -161,12 +182,25 @@ function updateViewCords(scale, minI, maxI, minR, maxR) {
   return { minI, maxI, minR, maxR };
 }
 
-// function mouseWheel(event) {
-//   scale += zoomSpeed * scale * (event.delta / abs(event.delta));
-//   speed = panSpeed(scale, speed);
-//   xOffset = map(mouseX - cX, 0, width, -1.5, 1.5);
-//   yOffset = map(mouseY - cY, 0, height, -1.0, 1.0);
-//   cX = map(mouseX - xOffset - width / 2, 0, width, -1.5, 1.5);
-//   cY = map(mouseY - yOffset, 0 - height / 2, height, -1.0, 1.0);
-//   drawFractal(cX, cY, scale, minI, maxI, minR, maxR);
-// }
+function keyReleased() {
+  if (keyCode === 87) {
+    up.removeClass('bg-primary');
+  }
+
+  if (keyCode === 83) {
+    down.removeClass('bg-primary');
+  }
+  if (keyCode === 65) {
+    left.removeClass('bg-primary');
+  }
+  if (keyCode === 68) {
+    right.removeClass('bg-primary');
+  }
+  if (keyCode === 75) {
+    zoomIn.removeClass('bg-primary');
+  }
+  if (keyCode === 76) {
+    zoomOut.removeClass('bg-primary');
+  }
+  return false; // prevent any default behavior
+}

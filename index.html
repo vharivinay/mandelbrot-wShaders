@@ -76,6 +76,9 @@
                   <button type="button" class="btn btn-secondary " id="record">
                     Record
                   </button>
+                  <button type="button" class="btn btn-secondary btn" id="reset">
+                    Reset
+                  </button>
                   <button type="button" class="btn btn-outline-dark disabled" id="fps">
                     FPS:
                   </button>
@@ -84,42 +87,51 @@
             </div>
           </div>
           <div class="col-lg-3">
-              <div class="text-justify">
-                <h3>Controls</h3>
-                <hr />
-                <p class="text-center text-light bg-secondary">
-                  Use 'W', 'A', 'S', 'D' for panning.
-                </p>
-                <div class="row">
-                  <div class="col-sm-4 offset-4 text-center">
-                    <h4 class="display-4 bg-body rounded shadow p-2">W</h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-4 text-center">
-                    <h4 class="display-4 bg-body rounded shadow p-2">A</h4>
-                  </div>
-                  <div class="col-sm-4 text-center">
-                    <h4 class="display-4 bg-body rounded shadow p-2">S</h4>
-                  </div>
-                  <div class="col-sm-4 text-center">
-                    <h4 class="display-4 bg-body rounded shadow p-2">D</h4>
-                  </div>
-                </div>
-                <hr />
-                <p class="text-center text-light bg-secondary">
-                  Use 'K'to zoom in & 'L' to zoom out.
-                </p>
-                <div class="row">
-                  <div class="col-sm-4 text-center offset-2">
-                    <h4 class="display-4 bg-body rounded shadow p-2">K</h4>
-                  </div>
-                  <div class="col-sm-4 text-center">
-                    <h4 class="display-4 bg-body rounded shadow p-2">L</h4>
-                  </div>
+            <div class="text-justify">
+              <h3>Controls</h3>
+              <hr />
+            <p class="text-center text-light bg-secondary">Pan Controls.</p>
+              <div class="row">
+                <div class="col-sm-4 offset-4 text-center">
+                  <h4 id="ctl-up" class="display-6 bg-body rounded shadow p-4">
+                    <strong>W</strong>
+                  </h4>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-sm-4 text-center">
+                  <h4 id="ctl-left" class="display-6 bg-body rounded shadow p-4">
+                    <strong>A</strong>
+                  </h4>
+                </div>
+                <div class="col-sm-4 text-center">
+                  <h4 id="ctl-down" class="display-6 bg-body rounded shadow p-4">
+                    <strong>S</strong>
+                  </h4>
+                </div>
+                <div class="col-sm-4 text-center">
+                  <h4 id="ctl-right" class="display-6 bg-body rounded shadow p-4">
+                    <strong>D</strong>
+                  </h4>
+                </div>
+              </div>
+              <hr />
+              <p class="text-center text-light bg-secondary">Zoom Controls.</p>
+              <div class="row">
+                <div class="col-sm-4 text-center offset-2">
+                  <h4 id="ctl-zoomIn" class="display-6 bg-body rounded shadow p-4">
+                    <strong>K</strong>
+                  </h4>
+                </div>
+                <div class="col-sm-4 text-center">
+                  <h4 id="ctl-zoomOut" class="display-6 bg-body rounded shadow p-4">
+                    <strong>L</strong>
+                  </h4>
+                </div>
+              </div>
+              <hr />
             </div>
+          </div>
         </div>
       </div>
     </div>
